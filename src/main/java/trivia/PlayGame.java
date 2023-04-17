@@ -12,12 +12,12 @@ public class PlayGame {
    public static void main(String[] args) {
 
       System.out.println("*** Welcome to Trivia Game ***\n");
-      System.out.println("Enter number of players: 1-4");
+      System.out.println("Enter number of players: [2-6]");
       int playerCount = Integer.parseInt(scanner.nextLine());
-      if (playerCount < 1 || playerCount > 4) throw new IllegalArgumentException("No player 1..4");
+      if (playerCount < 2 || playerCount > 6) throw new IllegalArgumentException("Number of players should be [2-6], you entered: " + playerCount);
       System.out.println("Reading names for " + playerCount + " players:");
 
-      IGame aGame = new Game();
+      IGame aGame = new GameImpl ();
 
       for (int i = 1; i <= playerCount; i++) {
          System.out.print("Player "+i+" name: ");

@@ -3,8 +3,9 @@ package trivia;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-// REFACTOR ME
-public class GameBetter implements IGame {
+
+// TODO refactor me
+public class GameImpl implements IGame {
    ArrayList players = new ArrayList();
    int[] places = new int[6];
    int[] purses = new int[6];
@@ -18,7 +19,7 @@ public class GameBetter implements IGame {
    int currentPlayer = 0;
    boolean isGettingOutOfPenaltyBox;
 
-   public GameBetter() {
+   public GameImpl () {
       for (int i = 0; i < 50; i++) {
          popQuestions.addLast("Pop Question " + i);
          scienceQuestions.addLast(("Science Question " + i));
@@ -36,6 +37,8 @@ public class GameBetter implements IGame {
    }
 
    public boolean add(String playerName) {
+
+
       players.add(playerName);
       places[howManyPlayers()] = 0;
       purses[howManyPlayers()] = 0;
@@ -135,7 +138,7 @@ public class GameBetter implements IGame {
 
       } else {
 
-         System.out.println("Answer was corrent!!!!");
+         System.out.println("Answer was correct!!!!");
          purses[currentPlayer]++;
          System.out.println(players.get(currentPlayer)
                             + " now has "
@@ -152,6 +155,8 @@ public class GameBetter implements IGame {
 
    public boolean wrongAnswer() {
       System.out.println("Question was incorrectly answered");
+      System.out.println ("Second chance to avoid the penalty, asking question from the same category");
+      askQuestion ();
       System.out.println(players.get(currentPlayer) + " was sent to the penalty box");
       inPenaltyBox[currentPlayer] = true;
 
